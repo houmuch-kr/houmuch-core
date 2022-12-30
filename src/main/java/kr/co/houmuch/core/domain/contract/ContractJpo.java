@@ -19,8 +19,8 @@ public class ContractJpo {
     @Builder.Default
     private Long id = 0L;
     private String type;
+    private String serialNumber;
     private String buildingType;
-    private Integer builtAt;
     private LocalDate contractedAt;
     private String name;
 
@@ -28,4 +28,14 @@ public class ContractJpo {
     @JoinColumn(name = "area_code")
     @OneToOne(fetch = FetchType.LAZY)
     private AreaCodeJpo areaCode;
+
+    @ToString.Exclude
+    @JoinColumn(name = "id")
+    @OneToOne(fetch = FetchType.LAZY)
+    private ContractDetailJpo detail;
+
+    @ToString.Exclude
+    @JoinColumn(name = "id")
+    @OneToOne(fetch = FetchType.LAZY)
+    private ContractAdditionalJpo additional;
 }
