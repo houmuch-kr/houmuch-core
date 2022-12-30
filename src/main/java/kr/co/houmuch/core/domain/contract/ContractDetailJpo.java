@@ -1,5 +1,6 @@
 package kr.co.houmuch.core.domain.contract;
 
+import kr.co.houmuch.core.domain.JsonSerializable;
 import lombok.*;
 
 import javax.persistence.*;
@@ -12,7 +13,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "contract_detail")
 @Builder
-public class ContractDetailJpo {
+public class ContractDetailJpo implements JsonSerializable {
     @Id
     @ToString.Exclude
     @OneToOne(fetch = FetchType.LAZY)

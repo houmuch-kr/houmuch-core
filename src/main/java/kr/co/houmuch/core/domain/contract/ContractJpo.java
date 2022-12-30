@@ -1,5 +1,6 @@
 package kr.co.houmuch.core.domain.contract;
 
+import kr.co.houmuch.core.domain.JsonSerializable;
 import kr.co.houmuch.core.domain.code.AreaCodeJpo;
 import lombok.*;
 
@@ -14,7 +15,7 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "contract")
 @Builder
-public class ContractJpo {
+public class ContractJpo implements JsonSerializable {
     @Id
     @Builder.Default
     private Long id = 0L;
