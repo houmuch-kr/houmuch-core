@@ -36,11 +36,11 @@ public class ContractJpo implements JsonSerializable {
 
     @ToString.Exclude
     @JoinColumn(name = "id")
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     private ContractDetailJpo detail;
 
     @ToString.Exclude
     @JoinColumn(name = "id")
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     private ContractAdditionalJpo additional;
 }
