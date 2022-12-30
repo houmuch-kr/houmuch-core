@@ -19,11 +19,15 @@ public class ContractJpo implements JsonSerializable {
     @Id
     @Builder.Default
     private Long id = 0L;
-    private String type;
     private String serialNumber;
-    private String buildingType;
     private LocalDate contractedAt;
     private String name;
+
+    @Enumerated(EnumType.STRING)
+    private ContractType type;
+
+    @Enumerated(EnumType.STRING)
+    private BuildingType buildingType;
 
     @ToString.Exclude
     @JoinColumn(name = "area_code")
