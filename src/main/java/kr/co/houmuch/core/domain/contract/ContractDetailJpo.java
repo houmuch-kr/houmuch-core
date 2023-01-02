@@ -15,8 +15,11 @@ import javax.persistence.*;
 @Builder
 public class ContractDetailJpo implements JsonSerializable {
     @Id
+    private Long id;
+
+    @MapsId("id")
     @ToString.Exclude
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "detail")
     @JoinColumn(name = "id")
     private ContractJpo contract;
     private Integer price;
