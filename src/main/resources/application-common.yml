@@ -1,0 +1,5 @@
+naver-api:
+  map:
+    base-url: https://naveropenapi.apigw.ntruss.com
+    client-id: ${HM_NAVER_CLIENT_ID}
+    client-secret: ${HM_NAVER_CLIENT_SECRET}
