@@ -1,10 +1,9 @@
 package kr.co.houmuch.core.domain.code;
 
+import kr.co.houmuch.core.domain.area.jpa.AreaCoordinateJpo;
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Getter
 @Setter
@@ -20,6 +19,11 @@ public class AreaCodeJpo {
     private int code;
     private String address;
     private String fullAddress;
+
+    @ToString.Exclude
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "id")
+    private AreaCoordinateJpo coordinate;
 
     /**
      * 지정된 자리수에 해당하는 지역 코드 반환
