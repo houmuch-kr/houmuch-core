@@ -14,8 +14,8 @@ import javax.persistence.Embeddable;
 @Builder
 @Embeddable
 public class CombinedAreaCodeJpo implements JsonSerializable {
-    @Column(name = "area_code")
-    private int area;
+    @Column(name = "sido_code")
+    private int sido;
 
     @Column(name = "sgg_code")
     private int sgg;
