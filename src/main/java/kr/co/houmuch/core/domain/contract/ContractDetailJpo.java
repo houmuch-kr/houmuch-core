@@ -15,7 +15,7 @@ import javax.persistence.*;
 @Builder
 public class ContractDetailJpo implements JsonSerializable {
     @Id
-    private Long id;
+    private String id;
 
     @MapsId("id")
     @ToString.Exclude

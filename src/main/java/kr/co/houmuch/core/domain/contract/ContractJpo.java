@@ -17,8 +17,7 @@ import java.time.LocalDate;
 @Builder
 public class ContractJpo implements JsonSerializable {
     @Id
-    @Builder.Default
-    private Long id = 0L;
+    private String id;
     private String serialNumber;
     private LocalDate contractedAt;
     private String name;
