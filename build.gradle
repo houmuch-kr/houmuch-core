@@ -68,6 +68,10 @@ dependencies {
     testImplementation 'com.h2database:h2'
 }
 
+tasks.named('publishToMavenLocal') {
+    dependsOn 'test'
+}
+
 tasks.named('test') {
     useJUnitPlatform()
 }
