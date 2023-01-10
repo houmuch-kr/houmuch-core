@@ -15,21 +15,21 @@ public interface AreaCodeJpaRepository extends JpaRepository<AreaCodeJpo, Long> 
     /**
      * 광역시/도 타입 지역 목록 조회 (type : 0)
      */
-    default Page<AreaCodeJpo> findSidoAll(Pageable pageable) {
+    default Page<AreaCodeJpo> findSido(Pageable pageable) {
         return findByType(0, pageable);
     }
 
     /**
      * 시/군/구 타입 지역 목록 조회 (type : 1)
      */
-    default Page<AreaCodeJpo> findSggAll(Pageable pageable) {
+    default Page<AreaCodeJpo> findSgg(Pageable pageable) {
         return findByType(1, pageable);
     }
 
     /**
      * 읍/면/동 타입 지역 목록 조회 (type : 2)
      */
-    default Page<AreaCodeJpo> findUmdAll(Pageable pageable) {
+    default Page<AreaCodeJpo> findUmd(Pageable pageable) {
         return findByType(2, pageable);
     }
 }
