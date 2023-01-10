@@ -1,6 +1,7 @@
 package kr.co.houmuch.core.domain.code;
 
 import kr.co.houmuch.core.domain.area.jpa.AreaCoordinateJpo;
+import kr.co.houmuch.core.domain.common.jpa.CombinedAreaCodeJpo;
 import lombok.*;
 
 import javax.persistence.*;
@@ -10,15 +11,19 @@ import javax.persistence.*;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Entity
 @Table(name = "area_code")
 public class AreaCodeJpo {
     @Id
     private Long id;
     private int type;
-    private int code;
     private String address;
+    private String shortAddress;
     private String fullAddress;
+
+    @Embedded
+    private CombinedAreaCodeJpo code;
 
     @ToString.Exclude
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
