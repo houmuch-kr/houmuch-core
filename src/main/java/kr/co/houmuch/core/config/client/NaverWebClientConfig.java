@@ -13,7 +13,6 @@ public class NaverWebClientConfig {
 
     @Bean(name = "naverMapWebClient")
     public WebClient webClient() {
-        System.out.println("naverApiProperties.getMap().getBaseUrl() --> " + naverApiProperties.getMap().getBaseUrl());
         return WebClient.builder()
                 .baseUrl(naverApiProperties.getMap().getBaseUrl())
                 .defaultHeader("X-NCP-APIGW-API-KEY-ID", naverApiProperties.getMap().getClientId())
