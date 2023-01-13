@@ -2,6 +2,8 @@ package kr.co.houmuch.core.domain.common.dto;
 
 import lombok.*;
 
+import static java.util.Objects.nonNull;
+
 @Getter
 @Setter
 @ToString
@@ -15,13 +17,13 @@ public class CombinedAreaCode {
 
     public Long getFullCode() {
         long code = 0;
-        if (sido != 0) {
+        if (nonNull(sido) && sido != 0) {
             code = sido * 100000000;
         }
-        if (sgg != 0) {
+        if (nonNull(sgg) && sgg != 0) {
             code += sgg * 100000;
         }
-        if (umd != 0) {
+        if (nonNull(umd) && umd != 0) {
             code += umd;
         }
         if (code < 1100000000) {
