@@ -13,11 +13,11 @@ public class CombinedAreaCode {
     private Integer sgg;
     private Integer umd;
 
-    private static CombinedAreaCode of(Integer sido) {
+    public static CombinedAreaCode of(Integer sido) {
         return of(sido, null, null);
     }
 
-    private static CombinedAreaCode of(Integer sido, Integer sgg) {
+    public static CombinedAreaCode of(Integer sido, Integer sgg) {
         return of(sido, sgg, null);
     }
 
