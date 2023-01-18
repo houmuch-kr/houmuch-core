@@ -18,7 +18,7 @@ public class CombinedAreaCode {
     public Long getFullCode() {
         long code = 0;
         if (nonNull(sido) && sido != 0) {
-            code = sido * 100000000;
+            code = sido * 100000000L;
         }
         if (nonNull(sgg) && sgg != 0) {
             code += sgg * 100000;
