@@ -25,7 +25,4 @@ public class ContractDetailJpo implements JsonSerializable {
     private Integer price;
     private Integer monthlyPrice;
     private Integer floor;
-    private String addressDetail;
-    private Double squareMeter;
-    private Integer builtAt;
 }
