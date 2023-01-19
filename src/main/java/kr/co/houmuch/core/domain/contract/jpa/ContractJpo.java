@@ -1,7 +1,8 @@
-package kr.co.houmuch.core.domain.contract;
+package kr.co.houmuch.core.domain.contract.jpa;
 
 import kr.co.houmuch.core.domain.JsonSerializable;
 import kr.co.houmuch.core.domain.building.jpa.BuildingJpo;
+import kr.co.houmuch.core.domain.contract.ContractType;
 import lombok.*;
 
 import javax.persistence.*;

@@ -1,4 +1,4 @@
-package kr.co.houmuch.core.domain.contract;
+package kr.co.houmuch.core.domain.contract.jpa;
 
 import kr.co.houmuch.core.domain.JsonSerializable;
 import lombok.*;
