@@ -5,6 +5,7 @@ import kr.co.houmuch.core.domain.contract.BuildingType;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.Year;
 
 @Getter
 @Setter
@@ -18,6 +19,9 @@ public class BuildingJpo {
     @Id
     private String id;
     private String name;
+    private String addressDetail;
+    private Double squareMeter;
+    private Year builtAt;
 
     @Enumerated(EnumType.STRING)
     private BuildingType type;
