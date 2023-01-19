@@ -1,4 +1,4 @@
-package kr.co.houmuch.core.domain.common.dto;
+package kr.co.houmuch.core.domain.contract.dto;
 
 import kr.co.houmuch.core.domain.contract.BuildingType;
 import kr.co.houmuch.core.domain.contract.ContractType;
