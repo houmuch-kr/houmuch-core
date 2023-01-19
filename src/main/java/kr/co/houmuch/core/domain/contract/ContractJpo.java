@@ -1,7 +1,7 @@
 package kr.co.houmuch.core.domain.contract;
 
 import kr.co.houmuch.core.domain.JsonSerializable;
-import kr.co.houmuch.core.domain.code.AreaCodeJpo;
+import kr.co.houmuch.core.domain.building.jpa.BuildingJpo;
 import lombok.*;
 
 import javax.persistence.*;
@@ -20,18 +20,14 @@ public class ContractJpo implements JsonSerializable {
     private String id;
     private String serialNumber;
     private LocalDate contractedAt;
-    private String name;
 
     @Enumerated(EnumType.STRING)
     private ContractType type;
 
-    @Enumerated(EnumType.STRING)
-    private BuildingType buildingType;
-
     @ToString.Exclude
-    @JoinColumn(name = "area_code")
+    @JoinColumn(name = "building_id")
     @OneToOne(fetch = FetchType.LAZY)
-    private AreaCodeJpo areaCode;
+    private BuildingJpo building;
 
     @ToString.Exclude
     @JoinColumn(name = "id")
