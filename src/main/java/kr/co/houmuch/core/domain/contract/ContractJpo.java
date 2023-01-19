@@ -26,7 +26,7 @@ public class ContractJpo implements JsonSerializable {
 
     @ToString.Exclude
     @JoinColumn(name = "building_id")
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     private BuildingJpo building;
 
     @ToString.Exclude
