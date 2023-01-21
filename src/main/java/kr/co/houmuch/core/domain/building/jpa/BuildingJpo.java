@@ -3,8 +3,6 @@ package kr.co.houmuch.core.domain.building.jpa;
 import kr.co.houmuch.core.domain.code.AreaCodeJpo;
 import kr.co.houmuch.core.domain.contract.BuildingType;
 import lombok.*;
-import org.hibernate.annotations.NotFound;
-import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.*;
 
@@ -34,7 +32,6 @@ public class BuildingJpo {
     @OneToOne(fetch = FetchType.LAZY)
     private AreaCodeJpo areaCode;
 
-    @NotFound(action = NotFoundAction.IGNORE)
     @ToString.Exclude
     @JoinColumn(name = "id")
     @OneToOne(fetch = FetchType.LAZY)
