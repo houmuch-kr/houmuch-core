@@ -16,6 +16,7 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "building_coordinate")
 @EntityListeners(AuditingEntityListener.class)
+@Builder
 public class BuildingCoordinateJpo {
     @Id
     @Column(name = "building_id")
