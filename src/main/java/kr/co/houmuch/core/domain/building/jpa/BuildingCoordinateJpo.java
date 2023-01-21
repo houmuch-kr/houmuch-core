@@ -1,6 +1,6 @@
 package kr.co.houmuch.core.domain.building.jpa;
 
-import kr.co.houmuch.core.domain.common.jpa.CombinedAreaCodeJpo;
+import kr.co.houmuch.core.domain.common.jpa.CoordinateJpo;
 import lombok.*;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -23,7 +23,7 @@ public class BuildingCoordinateJpo {
     private String id;
 
     @Embedded
-    private CombinedAreaCodeJpo code;
+    private CoordinateJpo coordinate;
 
     @MapsId("id")
     @ToString.Exclude
