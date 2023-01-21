@@ -39,4 +39,13 @@ public class BuildingJpo {
     @JoinColumn(name = "id")
     @OneToOne(fetch = FetchType.LAZY)
     private BuildingCoordinateJpo coordinate;
+
+    /**
+     * 건물의 전체 주소 반환
+     * 광역시/도, 시/군/구, 읍/면/동, 상세주소를 포함함
+     * @return 예시) 서울시 종로구 익선동 461
+     */
+    public String getFullAddress() {
+        return String.format("%s %s", areaCode.getFullAddress(), addressDetail);
+    }
 }
