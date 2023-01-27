@@ -13,9 +13,9 @@ import lombok.*;
 public class Building {
     private String id;
     private String name;
-    private AreaCode area_code;
+    private AreaCode areaCode;
     private BuildingType type;
-    private Double address_detail;
-    private Double square_meter;
-    private Integer built_at;
+    private Double addressDetail;
+    private Double squareMeter;
+    private Integer builtAt;
 }
