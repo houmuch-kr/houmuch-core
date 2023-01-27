@@ -1,10 +1,13 @@
 package kr.co.houmuch.core.domain.code;
 
 import kr.co.houmuch.core.domain.area.jpa.AreaCoordinateJpo;
+import kr.co.houmuch.core.domain.building.jpa.BuildingJpo;
 import kr.co.houmuch.core.domain.common.jpa.CombinedAreaCodeJpo;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -29,6 +32,10 @@ public class AreaCodeJpo {
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "id")
     private AreaCoordinateJpo coordinate;
+
+	@ToString.Exclude
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "areaCode")
+	private List<BuildingJpo> buildingJpo = new ArrayList<>();
 
     /**
      * 지정된 자리수에 해당하는 지역 코드 반환
