@@ -29,7 +29,7 @@ public class BuildingJpo {
 
     @ToString.Exclude
     @JoinColumn(name = "area_code")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
     private AreaCodeJpo areaCode;
 
     @ToString.Exclude
