@@ -35,7 +35,7 @@ public class AreaCodeJpo {
 
 	@ToString.Exclude
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "areaCode")
-	private List<BuildingJpo> buildingJpo = new ArrayList<>();
+	private List<BuildingJpo> buildingJpo;
 
     /**
      * 지정된 자리수에 해당하는 지역 코드 반환
