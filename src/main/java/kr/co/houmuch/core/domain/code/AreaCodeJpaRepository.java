@@ -3,10 +3,15 @@ package kr.co.houmuch.core.domain.code;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public interface AreaCodeJpaRepository extends JpaRepository<AreaCodeJpo, Long> {
+		@Query("SELECT c FROM AreaCodeJpo c INNER JOIN FETCH c.coordinate WHERE c.type = :type")
+		List<AreaCodeJpo> findByType2(int type);
     Page<AreaCodeJpo> findByType(int type, Pageable pageable);
     Page<AreaCodeJpo> findByCodeSido(int sido, Pageable pageable);
     Page<AreaCodeJpo> findByCodeSidoAndCodeSgg(int sido, int sgg, Pageable pageable);
