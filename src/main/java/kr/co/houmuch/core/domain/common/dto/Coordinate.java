@@ -7,6 +7,10 @@ public record Coordinate(double latitude, double longitude) {
         return new Coordinate(latitude, longitude);
     }
 
+    public static Coordinate entityOf(CoordinateJpo coordinateJpo) {
+        return new Coordinate(coordinateJpo.getLatitude(), coordinateJpo.getLongitude());
+    }
+
     public CoordinateJpo asJpo() {
         return new CoordinateJpo(latitude, longitude);
     }
