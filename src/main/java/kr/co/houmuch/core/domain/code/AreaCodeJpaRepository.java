@@ -10,8 +10,8 @@ import java.util.List;
 
 @Repository
 public interface AreaCodeJpaRepository extends JpaRepository<AreaCodeJpo, Long> {
-		@Query("SELECT c FROM AreaCodeJpo c INNER JOIN FETCH c.coordinate WHERE c.type = :type")
-		List<AreaCodeJpo> findByType2(int type);
+    @Query("SELECT c FROM AreaCodeJpo c INNER JOIN FETCH c.coordinate WHERE c.type = :type")
+    List<AreaCodeJpo> findByType(int type);
     Page<AreaCodeJpo> findByType(int type, Pageable pageable);
     Page<AreaCodeJpo> findByCodeSido(int sido, Pageable pageable);
     Page<AreaCodeJpo> findByCodeSidoAndCodeSgg(int sido, int sgg, Pageable pageable);
