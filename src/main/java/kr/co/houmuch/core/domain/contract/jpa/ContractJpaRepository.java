@@ -12,16 +12,15 @@ import java.util.List;
 
 @Repository
 public interface ContractJpaRepository extends JpaRepository<ContractJpo, String> {
-	@Query("SELECT c FROM ContractJpo c " +
-					"INNER JOIN FETCH c.additional ca " +
-					"INNER JOIN FETCH c.detail cd " +
-					"INNER JOIN FETCH c.building b " +
-					"INNER JOIN FETCH b.areaCode a " +
-					"LEFT OUTER JOIN FETCH b.coordinate bc " +
-					"WHERE a IN (:areaCodeList)")
-	List<ContractJpo> findByBuildingAreaCode2(List<AreaCodeJpo> areaCodeList);
-	Page<ContractJpo> findByBuildingAreaCode(AreaCodeJpo areaCodeJpo, Pageable pageable);
-
+    @Query("SELECT c FROM ContractJpo c " +
+                    "INNER JOIN FETCH c.additional ca " +
+                    "INNER JOIN FETCH c.detail cd " +
+                    "INNER JOIN FETCH c.building b " +
+                    "INNER JOIN FETCH b.areaCode a " +
+                    "LEFT OUTER JOIN FETCH b.coordinate bc " +
+                    "WHERE a.code.sido IN (:sidoLists)")
+    List<ContractJpo> findByBuildingAreaCode(List<Integer> sidoLists);
+    Page<ContractJpo> findByBuildingAreaCode(AreaCodeJpo areaCodeJpo, Pageable pageable);
     @Query("SELECT c FROM ContractJpo c " +
             "INNER JOIN FETCH c.detail cd " +
             "INNER JOIN FETCH c.additional ca " +
