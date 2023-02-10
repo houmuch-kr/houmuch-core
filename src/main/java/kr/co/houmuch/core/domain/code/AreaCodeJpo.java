@@ -33,10 +33,9 @@ public class AreaCodeJpo {
     @JoinColumn(name = "id")
     private AreaCoordinateJpo coordinate;
 
-    @Builder.Default
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "areaCode")
-   // @JoinColumn(name = "id")
-    private List<BuildingJpo> building = new ArrayList<>();
+		@ToString.Exclude
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "areaCode")
+		private List<BuildingJpo> buildingJpo;
 
     /**
      * 지정된 자리수에 해당하는 지역 코드 반환
