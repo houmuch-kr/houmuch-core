@@ -6,7 +6,6 @@ import kr.co.houmuch.core.domain.common.jpa.CombinedAreaCodeJpo;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -33,9 +32,9 @@ public class AreaCodeJpo {
     @JoinColumn(name = "id")
     private AreaCoordinateJpo coordinate;
 
-		@ToString.Exclude
-		@OneToMany(fetch = FetchType.LAZY, mappedBy = "areaCode")
-		private List<BuildingJpo> buildingJpo;
+    @ToString.Exclude
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "areaCode")
+    private List<BuildingJpo> buildingJpo;
 
     /**
      * 지정된 자리수에 해당하는 지역 코드 반환
