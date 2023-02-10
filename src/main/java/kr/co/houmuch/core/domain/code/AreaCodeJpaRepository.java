@@ -12,7 +12,6 @@ import java.util.List;
 public interface AreaCodeJpaRepository extends JpaRepository<AreaCodeJpo, Long> {
     @Query("SELECT c FROM AreaCodeJpo c INNER JOIN FETCH c.coordinate WHERE c.type = :type")
     List<AreaCodeJpo> findByType(int type);
-    List<AreaCodeJpo> findByType2(int type);
     @Query("SELECT c FROM AreaCodeJpo c LEFT OUTER JOIN FETCH c.coordinate")
     List<AreaCodeJpo> findAllFetchJoin();
     Page<AreaCodeJpo> findByType(int type, Pageable pageable);
