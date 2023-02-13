@@ -19,7 +19,25 @@ public interface ContractJpaRepository extends JpaRepository<ContractJpo, String
                     "INNER JOIN FETCH b.areaCode a " +
                     "LEFT OUTER JOIN FETCH b.coordinate bc " +
                     "WHERE a.code.sido IN (:sidoLists)")
-    List<ContractJpo> findByBuildingAreaCode(List<Integer> sidoLists);
+    List<ContractJpo> findByBuildingAreaCodeSido(List<Integer> sidoLists);
+
+    @Query("SELECT c FROM ContractJpo c " +
+            "INNER JOIN FETCH c.additional ca " +
+            "INNER JOIN FETCH c.detail cd " +
+            "INNER JOIN FETCH c.building b " +
+            "INNER JOIN FETCH b.areaCode a " +
+            "LEFT OUTER JOIN FETCH b.coordinate bc " +
+            "WHERE a.code.sgg IN (:sggLists)")
+    List<ContractJpo> findByBuildingAreaCodeSgg(List<Integer> sggLists);
+
+    @Query("SELECT c FROM ContractJpo c " +
+            "INNER JOIN FETCH c.additional ca " +
+            "INNER JOIN FETCH c.detail cd " +
+            "INNER JOIN FETCH c.building b " +
+            "INNER JOIN FETCH b.areaCode a " +
+            "LEFT OUTER JOIN FETCH b.coordinate bc " +
+            "WHERE a.code.umd IN (:umdLists)")
+    List<ContractJpo> findByBuildingAreaCodeUmd(List<Integer> umdLists);
     Page<ContractJpo> findByBuildingAreaCode(AreaCodeJpo areaCodeJpo, Pageable pageable);
     @Query("SELECT c FROM ContractJpo c " +
             "INNER JOIN FETCH c.detail cd " +
