@@ -34,6 +34,16 @@ configurations {
 }
 
 publishing {
+    repositories {
+        maven {
+            name = "github-registry"
+            url = uri("https://maven.pkg.github.com/houmuch-kr/registry")
+            credentials {
+                username = System.getenv("GITHUB_USERNAME")
+                password = System.getenv("GITHUB_PASSWORD")
+            }
+        }
+    }
     publications {
         maven(MavenPublication) {
             versionMapping {
