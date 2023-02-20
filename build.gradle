@@ -6,7 +6,7 @@ plugins {
 }
 
 group = 'kr.co.houmuch'
-version = '1.0.0-SNAPSHOT'
+version = '1.0.0'
 sourceCompatibility = '17'
 
 dependencyManagement {
@@ -35,6 +35,7 @@ configurations {
 
 publishing {
     if (project.hasProperty("profile") && project.property("profile").toString().contains("prod")) {
+        setVersion("1.0.0-SNAPSHOT")
         repositories {
             maven {
                 name = "github-registry"
