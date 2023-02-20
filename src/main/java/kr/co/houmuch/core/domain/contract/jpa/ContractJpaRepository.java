@@ -48,12 +48,14 @@ public interface ContractJpaRepository extends JpaRepository<ContractJpo, String
             "INNER JOIN FETCH a.coordinate " +
             "WHERE (:sido = 0 OR a.code.sido = :sido) " +
 			"AND (:sgg = 0 OR a.code.sgg = :sgg) " +
-			"AND (:umd = 0 OR a.code.umd = :umd)")
-    List<ContractJpo> findByAreaCode(int sido, int sgg, int umd);
+			"AND (:umd = 0 OR a.code.umd = :umd) " +
+            "ORDER BY c.contractedAt DESC")
+    List<ContractJpo> findByAreaCode(int sido, int sgg, int umd, Pageable pageable);
 
     @Query("SELECT c FROM ContractJpo c " +
             "INNER JOIN FETCH c.building cb " +
             "INNER JOIN FETCH cb.areaCode " +
-            "WHERE c.building = :buildingJpo")
-    List<ContractJpo> findByBuilding(BuildingJpo buildingJpo);
+            "WHERE c.building = :buildingJpo " +
+            "ORDER BY c.contractedAt DESC")
+    List<ContractJpo> findByBuilding(BuildingJpo buildingJpo, Pageable pageable);
 }
