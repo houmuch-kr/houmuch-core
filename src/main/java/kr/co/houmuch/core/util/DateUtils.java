@@ -10,6 +10,51 @@ public final class DateUtils {
 
     /**
      * <p>
+     * date 의 날짜가 (현재 System 일시 기준 - day) 이전인가 ?
+     * <pre>
+     *   LocalDate a = LocalDate.of(2023, 2, 13);
+     *   LocalDate b = LocalDate.of(2023, 2, 12);
+     *   isBetween(a, 7) == true
+     *   isBetween(b, 7) == false
+     * </pre>
+     * </p>
+     */
+    public static boolean isFromDay(LocalDate date, int day) {
+        return isGreaterThanOrEqualsTo(date, LocalDate.now().minusDays(day));
+    }
+
+    /**
+     * <p>
+     * date 의 날짜가 (현재 System 일시 기준 - month) 이전인가 ?
+     * <pre>
+     *   LocalDate a = LocalDate.of(2023, 1, 13);
+     *   LocalDate b = LocalDate.of(2023, 2, 12);
+     *   isBetween(a, 1) == false
+     *   isBetween(b, 1) == true
+     * </pre>
+     * </p>
+     */
+    public static boolean isFromMonth(LocalDate date, int month) {
+        return isGreaterThanOrEqualsTo(date, LocalDate.now().minusMonths(month));
+    }
+
+    /**
+     * <p>
+     * date 의 날짜가 (현재 System 일시 기준 - year) 이전인가 ?
+     * <pre>
+     *   LocalDate a = LocalDate.of(2022, 1, 13);
+     *   LocalDate b = LocalDate.of(2023, 2, 12);
+     *   isBetween(a, 1) == false
+     *   isBetween(b, 1) == true
+     * </pre>
+     * </p>
+     */
+    public static boolean isFromYear(LocalDate date, int year) {
+        return isGreaterThanOrEqualsTo(date, LocalDate.now().minusYears(year));
+    }
+
+    /**
+     * <p>
      * date 의 날짜가 begin 이후이면서 같고, end 이전이면서 같은가 ?
      * <pre>
      *   LocalDate a = LocalDate.of(2023, 1, 25);
