@@ -6,7 +6,7 @@ plugins {
 }
 
 group = 'kr.co.houmuch'
-version = '1.0.0'
+version = '1.0.1-SNAPSHOT'
 sourceCompatibility = '17'
 
 dependencyManagement {
@@ -34,16 +34,13 @@ configurations {
 }
 
 publishing {
-    if (project.hasProperty("profile") && project.property("profile").toString().contains("prod")) {
-        setVersion("1.0.0-SNAPSHOT")
-        repositories {
-            maven {
-                name = "github-registry"
-                url = uri("https://maven.pkg.github.com/houmuch-kr/registry")
-                credentials {
-                    username = System.getenv("GITHUB_USERNAME")
-                    password = System.getenv("GITHUB_PASSWORD")
-                }
+    repositories {
+        maven {
+            name = "github-registry"
+            url = uri("https://maven.pkg.github.com/houmuch-kr/registry")
+            credentials {
+                username = System.getenv("GITHUB_USERNAME")
+                password = System.getenv("GITHUB_PASSWORD")
             }
         }
     }
