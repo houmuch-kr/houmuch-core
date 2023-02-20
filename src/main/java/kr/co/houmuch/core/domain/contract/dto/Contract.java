@@ -1,8 +1,9 @@
 package kr.co.houmuch.core.domain.contract.dto;
 
-import kr.co.houmuch.core.domain.common.dto.CombinedAreaCode;
-import kr.co.houmuch.core.domain.contract.BuildingType;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import kr.co.houmuch.core.domain.building.dto.Building;
 import kr.co.houmuch.core.domain.contract.ContractType;
+import kr.co.houmuch.core.domain.contract.jpa.ContractJpo;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -13,17 +14,27 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class Contract {
     private String id;
     private ContractType type;
-    private BuildingType buildingType;
-    private Long areaCode;
     private LocalDate contractedAt;
     private String serialNumber;
-    private String name;
+    private Integer floor;
+    private int price;
+    private Integer monthlyPrice;
+    private Building building;
 
-    public static Contract of(String id, ContractType type, BuildingType buildingType, Long areaCode, LocalDate contractedAt, String serialNumber, String name) {
-        return new Contract(id, type, buildingType, areaCode, contractedAt, serialNumber, name);
+    public static Contract entityOf(ContractJpo contractJpo) {
+        return builder()
+                .id(contractJpo.getId())
+                .type(contractJpo.getType())
+                .contractedAt(contractJpo.getContractedAt())
+                .serialNumber(contractJpo.getSerialNumber())
+                .floor(contractJpo.getDetail().getFloor())
+                .price(contractJpo.getDetail().getPrice())
+                .monthlyPrice(contractJpo.getDetail().getMonthlyPrice())
+                .building(Building.entityOf(contractJpo.getBuilding()))
+                .build();
     }
-
 }

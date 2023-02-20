@@ -2,6 +2,7 @@ package kr.co.houmuch.core.domain.contract.jpa;
 
 import kr.co.houmuch.core.domain.JsonSerializable;
 import kr.co.houmuch.core.domain.building.jpa.BuildingJpo;
+import kr.co.houmuch.core.domain.code.AreaCodeJpo;
 import kr.co.houmuch.core.domain.contract.ContractType;
 import lombok.*;
 
@@ -39,4 +40,11 @@ public class ContractJpo implements JsonSerializable {
     @JoinColumn(name = "id")
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     private ContractAdditionalJpo additional;
+
+    /**
+     * 지역 코드 비교
+     */
+    public boolean equalsAreaCode(AreaCodeJpo areaCodeJpo) {
+        return areaCodeJpo.getId().equals(building.getAreaCode().getId());
+    }
 }
