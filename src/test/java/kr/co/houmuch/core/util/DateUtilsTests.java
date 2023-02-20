@@ -36,4 +36,28 @@ public class DateUtilsTests {
         assertTrue(DateUtils.isLessThanOrEqualsTo(LocalDate.of(2023, 1, 25), to));
         assertTrue(DateUtils.isLessThanOrEqualsTo(LocalDate.of(2023, 1, 24), to));
     }
+
+    @Test
+    @DisplayName("isFromDay(date, day)")
+    public void isFromDay() {
+        final int day = 7;
+        assertTrue(DateUtils.isFromDay(LocalDate.of(2023, 2, 13), day));
+        assertFalse(DateUtils.isFromDay(LocalDate.of(2023, 2, 12), day));
+    }
+
+    @Test
+    @DisplayName("isFromMonth(date, month)")
+    public void isFromMonth() {
+        final int month = 1;
+        assertTrue(DateUtils.isFromMonth(LocalDate.of(2023, 1, 13), month));
+        assertFalse(DateUtils.isFromMonth(LocalDate.of(2023, 2, 12), month));
+    }
+
+    @Test
+    @DisplayName("isFromYear(date, year)")
+    public void isFromYear() {
+        final int year = 1;
+        assertTrue(DateUtils.isFromYear(LocalDate.of(2022, 1, 13), year));
+        assertFalse(DateUtils.isFromYear(LocalDate.of(2023, 2, 12), year));
+    }
 }
