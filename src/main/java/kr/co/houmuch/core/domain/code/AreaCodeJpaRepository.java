@@ -10,8 +10,13 @@ import java.util.List;
 
 @Repository
 public interface AreaCodeJpaRepository extends JpaRepository<AreaCodeJpo, Long> {
-    @Query("SELECT c FROM AreaCodeJpo c INNER JOIN FETCH c.coordinate WHERE c.type = :type")
-    List<AreaCodeJpo> findByType(int type);
+    @Query("SELECT c FROM AreaCodeJpo c INNER JOIN FETCH c.coordinate cc " +
+            "WHERE c.type = :type " +
+            "AND (cc.coordinate.latitude >= :minLatitude " +
+            "AND cc.coordinate.latitude <= :maxLatitude) " +
+            "AND (cc.coordinate.longitude >= :minLongitude " +
+            "AND cc.coordinate.longitude <= :maxLongitude)")
+    List<AreaCodeJpo> findByType(int type, double maxLatitude, double minLatitude, double maxLongitude, double minLongitude);
     @Query("SELECT c FROM AreaCodeJpo c LEFT OUTER JOIN FETCH c.coordinate")
     List<AreaCodeJpo> findAllFetchJoin();
     Page<AreaCodeJpo> findByType(int type, Pageable pageable);
