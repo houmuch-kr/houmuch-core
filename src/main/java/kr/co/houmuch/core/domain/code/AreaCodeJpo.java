@@ -37,11 +37,6 @@ public class AreaCodeJpo {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "areaCode")
     private List<BuildingJpo> buildingJpo;
 
-//    @ToString.Exclude
-//    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-//    @JoinColumn(name = "id")
-//    private ContractSummaryJpo contractSummaryJpo;
-
     /**
      * 지정된 자리수에 해당하는 지역 코드 반환
      * @param from 시작 자리수
