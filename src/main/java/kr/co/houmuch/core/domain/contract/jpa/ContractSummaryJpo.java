@@ -3,7 +3,6 @@ package kr.co.houmuch.core.domain.contract.jpa;
 import kr.co.houmuch.core.domain.JsonSerializable;
 import kr.co.houmuch.core.domain.code.AreaCodeJpo;
 import lombok.*;
-import org.springframework.context.annotation.Configuration;
 
 import javax.persistence.*;
 
@@ -26,5 +25,4 @@ public class ContractSummaryJpo implements JsonSerializable {
     @OneToOne
     @JoinColumn(name = "area_code")
     private AreaCodeJpo areaCode;
-
 }
