@@ -3,7 +3,6 @@ package kr.co.houmuch.core.domain.code;
 import kr.co.houmuch.core.domain.area.jpa.AreaCoordinateJpo;
 import kr.co.houmuch.core.domain.building.jpa.BuildingJpo;
 import kr.co.houmuch.core.domain.common.jpa.CombinedAreaCodeJpo;
-import kr.co.houmuch.core.domain.contractSummary.jpa.ContractSummaryJpo;
 import lombok.*;
 
 import javax.persistence.*;
