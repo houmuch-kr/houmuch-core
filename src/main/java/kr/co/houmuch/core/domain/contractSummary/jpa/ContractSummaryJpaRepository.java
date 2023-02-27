@@ -9,6 +9,6 @@ import java.util.List;
 
 @Repository
 public interface ContractSummaryJpaRepository extends JpaRepository<ContractSummaryJpo, Long> {
-    @Query("SELECT cs FROM ContractSummaryJpo cs  WHERE cs.areaCode in (:areaCodeJpoList)")
+    @Query("SELECT cs FROM ContractSummaryJpo cs  WHERE cs.id in (:areaCodeJpoList)")
     List<ContractSummaryJpo> findByAreaCode(List<Long> areaCodeJpoList);
 }
