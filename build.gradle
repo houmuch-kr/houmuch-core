@@ -8,6 +8,7 @@ plugins {
 group = 'kr.co.houmuch'
 version = '1.0.1-SNAPSHOT'
 sourceCompatibility = '17'
+ext.profile = (!project.hasProperty('profile') || !profile) ? 'local' : profile
 
 dependencyManagement {
     imports {
@@ -33,17 +34,17 @@ configurations {
     }
 }
 
+
 publishing {
-//    repositories {
-//        maven {
-//            name = "github-registry"
-//            url = uri("https://maven.pkg.github.com/houmuch-kr/registry")
-//            credentials {
-//                username = System.getenv("GITHUB_USERNAME")
-//                password = System.getenv("GITHUB_PASSWORD")
-//            }
-//        }
-//    }
+    repositories {
+        profile.toString() == "local" ? mavenLocal() : maven {
+            url = uri("https://maven.pkg.github.com/houmuch-kr/registry")
+            credentials {
+                username = System.getenv("GITHUB_USERNAME")
+                password = System.getenv("GITHUB_PASSWORD")
+            }
+        }
+    }
     publications {
         maven(MavenPublication) {
             versionMapping {
