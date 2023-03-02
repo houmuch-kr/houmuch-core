@@ -21,12 +21,11 @@ public interface BuildingJpaRepository extends JpaRepository<BuildingJpo, String
             "INNER JOIN FETCH cb.coordinate bc " +
             "INNER JOIN FETCH cb.areaCode a " +
             "LEFT JOIN FETCH a.coordinate ac " +
-            "WHERE a.type = :type " +
-            "AND (bc.coordinate.latitude >= :minLatitude " +
+            "WHERE (bc.coordinate.latitude >= :minLatitude " +
             "AND bc.coordinate.latitude <= :maxLatitude) " +
             "AND (bc.coordinate.longitude >= :minLongitude " +
             "AND bc.coordinate.longitude <= :maxLongitude) " +
-            "AND c.type = 'TRADE' ")
-    List<ContractJpo> findAllByContract(int type, double maxLatitude, double minLatitude, double maxLongitude, double minLongitude);
+            "AND c.type = 'TRADE'")
+    List<ContractJpo> findAllByContract(double maxLatitude, double minLatitude, double maxLongitude, double minLongitude);
 }
 
