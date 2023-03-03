@@ -19,6 +19,7 @@ public interface BuildingJpaRepository extends JpaRepository<BuildingJpo, String
             // 나중에 coordinate 데이터 다 넣으면 아래 주석 사용해야 함!
 //            "LEFT OUTER JOIN FETCH c.coordinate cc " +
             "INNER JOIN FETCH cb.coordinate bc " +
+            "INNER JOIN FETCH c.detail cd " +
             "INNER JOIN FETCH cb.areaCode a " +
             "LEFT JOIN FETCH a.coordinate ac " +
             "WHERE (bc.coordinate.latitude >= :minLatitude " +
