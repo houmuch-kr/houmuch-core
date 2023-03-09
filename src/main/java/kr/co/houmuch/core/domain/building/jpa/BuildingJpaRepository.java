@@ -30,7 +30,7 @@ public interface BuildingJpaRepository extends JpaRepository<BuildingJpo, String
     List<ContractJpo> findAllByContract(double maxLatitude, double minLatitude, double maxLongitude, double minLongitude);
     @Query("SELECT b FROM BuildingJpo b " +
             "INNER JOIN FETCH b.coordinate bc " +
-            "WHERE b.name like :searchWord%")
+            "WHERE b.name like %:searchWord%")
     List<BuildingJpo> findByName(String searchWord);
 }
 
