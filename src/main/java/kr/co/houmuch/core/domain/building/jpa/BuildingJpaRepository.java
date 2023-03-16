@@ -38,4 +38,3 @@ public interface BuildingJpaRepository extends JpaRepository<BuildingJpo, String
             "LEFT OUTER JOIN FETCH b.coordinate")
     List<BuildingJpo> findAllFetchJoin();
 }
-
