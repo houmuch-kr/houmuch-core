@@ -16,12 +16,12 @@ import javax.persistence.*;
 public class ContractSummaryJpo implements JsonSerializable {
     @Id
     @Column(name = "area_code")
-    private Long id;
+    private long id;
     private Double price;
     private int count;
 
     @ToString.Exclude
-    @MapsId("id")
+    @MapsId
     @OneToOne
     @JoinColumn(name = "area_code")
     private AreaCodeJpo areaCode;

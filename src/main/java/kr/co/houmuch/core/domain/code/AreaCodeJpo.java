@@ -1,5 +1,6 @@
 package kr.co.houmuch.core.domain.code;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import kr.co.houmuch.core.domain.area.jpa.AreaCoordinateJpo;
 import kr.co.houmuch.core.domain.building.jpa.BuildingJpo;
 import kr.co.houmuch.core.domain.common.jpa.CombinedAreaCodeJpo;
@@ -32,6 +33,7 @@ public class AreaCodeJpo {
     @JoinColumn(name = "id")
     private AreaCoordinateJpo coordinate;
 
+    @JsonIgnore
     @ToString.Exclude
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "areaCode")
     private List<BuildingJpo> buildingJpo;

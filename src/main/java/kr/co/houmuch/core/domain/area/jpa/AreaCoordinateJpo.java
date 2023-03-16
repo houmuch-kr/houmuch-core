@@ -1,5 +1,6 @@
 package kr.co.houmuch.core.domain.area.jpa;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import kr.co.houmuch.core.domain.code.AreaCodeJpo;
 import kr.co.houmuch.core.domain.common.jpa.CoordinateJpo;
 import lombok.*;
@@ -26,6 +27,7 @@ public class AreaCoordinateJpo {
     @Embedded
     private CoordinateJpo coordinate;
 
+    @JsonIgnore
     @ToString.Exclude
     @MapsId("id")
     @OneToOne(mappedBy = "coordinate")

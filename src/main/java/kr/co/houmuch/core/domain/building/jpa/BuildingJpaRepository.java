@@ -31,5 +31,11 @@ public interface BuildingJpaRepository extends JpaRepository<BuildingJpo, String
             "INNER JOIN FETCH b.coordinate bc " +
             "WHERE b.name like %:searchWord%")
     List<BuildingJpo> findByName(String searchWord, Pageable pageable);
+
+    @Query("SELECT b FROM BuildingJpo b " +
+            "INNER JOIN FETCH b.areaCode ba " +
+            "LEFT OUTER JOIN FETCH ba.coordinate " +
+            "LEFT OUTER JOIN FETCH b.coordinate")
+    List<BuildingJpo> findAllFetchJoin();
 }
 
