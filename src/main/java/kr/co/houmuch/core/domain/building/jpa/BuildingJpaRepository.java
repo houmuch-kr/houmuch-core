@@ -32,4 +32,3 @@ public interface BuildingJpaRepository extends JpaRepository<BuildingJpo, String
             "WHERE b.name like %:searchWord%")
     List<BuildingJpo> findByName(String searchWord, Pageable pageable);
 }
-
