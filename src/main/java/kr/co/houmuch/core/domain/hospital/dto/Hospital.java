@@ -1,5 +1,6 @@
 package kr.co.houmuch.core.domain.hospital.dto;
 
+import kr.co.houmuch.core.domain.common.dto.Coordinate;
 import kr.co.houmuch.core.domain.hospital.jpa.HospitalJpo;
 import lombok.*;
 @Setter
@@ -32,10 +33,7 @@ public class Hospital {
                 .tel(hospitalJpo.getTel())
                 .url(hospitalJpo.getUrl())
                 .builtAt(hospitalJpo.getBuiltAt())
-                .coordinate(Coordinate.builder()
-                        .latitude(hospitalJpo.getLatitude())
-                        .longitude(hospitalJpo.getLongitude())
-                        .build())
+                .coordinate(Coordinate.of(hospitalJpo.getLatitude(), hospitalJpo.getLongitude()))
                 .build();
     }
 }
