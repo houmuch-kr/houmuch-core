@@ -15,13 +15,13 @@ import javax.persistence.Id;
 public class Hospital {
     private String id;
     private String code;
-    private String code_name;
+    private String codeName;
     private String name;
-    private int zip_code;
+    private int zipCode;
     private String address;
     private String tel;
     private String url;
-    private String built_at;
+    private String builtAt;
     private double latitude;
     private double longitude;
 
@@ -29,13 +29,13 @@ public class Hospital {
         return builder()
                 .id(hospitalJpo.getId())
                 .code(hospitalJpo.getCode())
-                .code_name(hospitalJpo.getCode_name())
+                .codeName(hospitalJpo.getCodeName())
                 .name(hospitalJpo.getName())
-                .zip_code(hospitalJpo.getZip_code())
+                .zipCode(hospitalJpo.getZipCode())
                 .address(hospitalJpo.getAddress())
                 .tel(hospitalJpo.getTel())
                 .url(hospitalJpo.getUrl())
-                .built_at(hospitalJpo.getBuilt_at())
+                .builtAt(hospitalJpo.getBuiltAt())
                 .latitude(hospitalJpo.getLatitude())
                 .longitude(hospitalJpo.getLongitude())
                 .build();
