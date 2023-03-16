@@ -18,7 +18,7 @@ import javax.persistence.Table;
 public class HospitalJpo implements JsonSerializable {
     @Id
     private String id;
-    private String code;
+    private String code;        // value
     private String codeName;
     private String name;
     private int zipCode;
