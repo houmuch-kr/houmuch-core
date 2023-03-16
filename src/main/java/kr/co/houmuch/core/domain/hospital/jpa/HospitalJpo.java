@@ -19,13 +19,13 @@ public class HospitalJpo implements JsonSerializable {
     @Id
     private String id;
     private String code;
-    private String code_name;
+    private String codeName;
     private String name;
-    private int zip_code;
+    private int zipCode;
     private String address;
     private String tel;
     private String url;
-    private String built_at;
+    private String builtAt;
     private double latitude;
     private double longitude;
 }
