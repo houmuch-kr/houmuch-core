@@ -1,11 +1,7 @@
 package kr.co.houmuch.core.domain.hospital.dto;
 
-import kr.co.houmuch.core.domain.JsonSerializable;
 import kr.co.houmuch.core.domain.hospital.jpa.HospitalJpo;
 import lombok.*;
-
-import javax.persistence.Id;
-
 @Setter
 @Getter
 @ToString
@@ -14,30 +10,32 @@ import javax.persistence.Id;
 @Builder
 public class Hospital {
     private String id;
-    private String code;
-    private String codeName;
+    private Code code;
     private String name;
     private int zipCode;
     private String address;
     private String tel;
     private String url;
     private String builtAt;
-    private double latitude;
-    private double longitude;
+    private Coordinate coordinate;
 
     public static Hospital entityOf(HospitalJpo hospitalJpo){
         return builder()
                 .id(hospitalJpo.getId())
-                .code(hospitalJpo.getCode())
-                .codeName(hospitalJpo.getCodeName())
+                .code(Code.builder()
+                        .name(hospitalJpo.getCodeName())
+                        .value(hospitalJpo.getCode())
+                        .build())
                 .name(hospitalJpo.getName())
                 .zipCode(hospitalJpo.getZipCode())
                 .address(hospitalJpo.getAddress())
                 .tel(hospitalJpo.getTel())
                 .url(hospitalJpo.getUrl())
                 .builtAt(hospitalJpo.getBuiltAt())
-                .latitude(hospitalJpo.getLatitude())
-                .longitude(hospitalJpo.getLongitude())
+                .coordinate(Coordinate.builder()
+                        .latitude(hospitalJpo.getLatitude())
+                        .longitude(hospitalJpo.getLongitude())
+                        .build())
                 .build();
     }
 }
