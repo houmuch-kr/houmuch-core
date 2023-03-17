@@ -36,4 +36,14 @@ public class Hospital {
                 .coordinate(Coordinate.of(hospitalJpo.getLatitude(), hospitalJpo.getLongitude()))
                 .build();
     }
+    @Setter
+    @Getter
+    @ToString
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @Builder
+    public static class Code {
+        private String value;
+        private String name;
+    }
 }
