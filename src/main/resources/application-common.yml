@@ -3,3 +3,8 @@ naver-api:
     base-url: https://naveropenapi.apigw.ntruss.com
     client-id: ${HM_NAVER_CLIENT_ID}
     client-secret: ${HM_NAVER_CLIENT_SECRET}
+
+store-api:
+  store:
+    base-url: https://apis.data.go.kr
+    app-key: KHEIPmfhDTJdwnPh0WTTMN1YOUMy9rE%2FMJGErHp2pdcfw6uzit5C7yivZg1iUbTVRLXNSgn0A%2Bdi8lCAkdv3Zg%3D%3D
