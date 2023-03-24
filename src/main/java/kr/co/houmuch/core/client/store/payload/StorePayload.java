@@ -93,7 +93,7 @@ public class StorePayload {
             @JsonProperty("ksicNm")
             private String field2;
 
-            public StoreJpo asJpo(Store store) {
+            public StoreJpo asJpo() {
                 String randomId = RandomGenerator.generator(10);
                 return StoreJpo.builder()
                         .id(randomId)
