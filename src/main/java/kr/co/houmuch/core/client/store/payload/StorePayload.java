@@ -2,13 +2,10 @@ package kr.co.houmuch.core.client.store.payload;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.PropertyNamingStrategies;
-import com.fasterxml.jackson.databind.PropertyNamingStrategy;
-import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import kr.co.houmuch.core.domain.code.AreaCodeJpo;
-import kr.co.houmuch.core.domain.code.CodeJpo;
-import kr.co.houmuch.core.domain.code.IndustryCodeJpo;
 import kr.co.houmuch.core.domain.common.dto.Coordinate;
+import kr.co.houmuch.core.domain.common.jpa.CodeJpo;
+import kr.co.houmuch.core.domain.common.jpa.IndustryCodeJpo;
 import kr.co.houmuch.core.domain.common.jpa.CoordinateJpo;
 import kr.co.houmuch.core.domain.store.jpa.StoreAddressDetailJpo;
 import kr.co.houmuch.core.domain.store.jpa.StoreAddressJpo;
@@ -18,15 +15,12 @@ import kr.co.houmuch.core.util.RandomGenerator;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-
-import java.time.LocalDate;
 import java.util.List;
 
 @Getter
 @Setter
 @ToString
 @JsonIgnoreProperties(ignoreUnknown = true)
-//@JsonNaming(value = PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class StorePayload {
     private Body body;
     @Getter
@@ -89,53 +83,63 @@ public class StorePayload {
             private String value;
             //INDUSTRY_CODE
             @JsonProperty("ksicCd")
-            private String field1;
+            private String id;
             @JsonProperty("ksicNm")
-            private String field2;
+            private String codeName;
 
             public StoreJpo asJpo() {
                 String randomId = RandomGenerator.generator(10);
+                StoreAddressDetailJpo storeAddressDetailJpo = StoreAddressDetailJpo.builder()
+                        .id(randomId)
+                        .zipCodeOld(zipCodeOld)
+                        .zipCode(zipCode)
+                        .dong(dong)
+                        .floor(floor)
+                        .ho(ho)
+                        .bunjiMain(bunjiMain)
+                        .bunjiSub(bunjiSub)
+                        .build();
+                StoreAddressJpo storeAddressJpo = StoreAddressJpo.builder()
+                        .id(randomId)
+                        .buildingName(buildingName)
+                        .detail(storeAddressDetailJpo)
+                        .jibunAddr(jibunAddr)
+                        .roadAddr(roadAddr)
+                        .build();
+                StoreCoordinateJpo storeCoordinateJpo = StoreCoordinateJpo.builder()
+                        .id(randomId)
+                        .coordinate(Coordinate.of(latitude,longitude).asJpo())
+                        .build();
+                CodeJpo codeJpo = CodeJpo.builder()
+                        .id(randomId)
+                        .value(value)
+                        .cat1(cat1)
+                        .cat2(cat2)
+                        .cat3(cat3)
+                        .build();
+                IndustryCodeJpo industryCodeJpo = IndustryCodeJpo.builder()
+                        .storeId(randomId)
+                        .store(StoreJpo.builder().id(randomId).build())
+                        .id(id)
+                        .name(codeName)
+                        .build();
+                AreaCodeJpo areaCodeJpo = AreaCodeJpo.builder()
+                        .id(areaCode)
+                        .build();
+
+
                 return StoreJpo.builder()
                         .id(randomId)
                         .serialNumber(serialNumber)
                         .name(name)
                         .spotName(spotName)
-                        .areaCode(AreaCodeJpo.builder().id(areaCode).build())
-                        .coordinate(StoreCoordinateJpo.builder()
-                                .coordinate(new CoordinateJpo(latitude,longitude))
-                                .build())
-                        .address(StoreAddressJpo.builder()
-                                // id 넣어야할까
-                                .buildingName(buildingName)
-                                .jibunAddr(jibunAddr)
-                                .roadAddr(roadAddr)
-                                .detail(StoreAddressDetailJpo.builder()
-                                        //id 넣어야할까
-                                        .zipCodeOld(zipCodeOld)
-                                        .zipCode(zipCode)
-                                        .dong(dong)
-                                        .floor(floor)
-                                        .ho(ho)
-                                        .bunjiMain(bunjiMain)
-                                        .bunjiSub(bunjiSub)
-                                        .build())
-                                .build())
-                        .code(CodeJpo.builder()
-                                //id 넣어야할까
-                                .cat1(cat1)
-                                .cat2(cat2)
-                                .cat3(cat3)
-                                .value(value)
-                                .build())
-                        .industryCode(IndustryCodeJpo.builder()
-                                //id넣어야할까
-                                .field1(field1)
-                                .field2(field2)
-                                .build())
+                        .coordinate(storeCoordinateJpo)
+                        .address(storeAddressJpo)
+                        .areaCode(areaCodeJpo)
+                        .code(codeJpo)
+                        .industryCode(industryCodeJpo)
                         .build();
             }
         }
    }
-            // 테이블 Insert를 위한 Payload DTO > JPO
-
 }
